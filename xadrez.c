@@ -2,17 +2,18 @@
 
 int main() {
 
-    int opcao, torre  = 0, bispo = 0, rainha = 0;
+    int opcao, torre  = 0, bispo = 0, rainha = 0, cavalo = 0;
     
     printf("Desafio de Xadrez\n");
 
-    do{
+    do {
         //menu interativo
         printf("\ndigite qual torre voce gostaria de mover\n");
         printf("1.torre \n");
         printf("2.bispo \n");
         printf("3.rainha \n");
-        printf("4.finalizar teste. \n");
+        printf("4.cavalo \n");
+        printf("5.finalizar teste. \n");
         printf("digite a opcao que deseja: ");
         scanf("%d", &opcao);
 
@@ -27,13 +28,12 @@ int main() {
                 break;
         
             case 2:
-                printf("\nvoce escolheu a opcao o bispo:\n");
+                printf("\nvoce escolheu o bispo:\n");
                 do {
                 printf("Cima, Direita \n");// mostra a direção do movimento
                 bispo++;
                 } while (bispo < 5);//move o bispo 5 casas na diagonal
                 bispo = 0;
-           
                 break;
             
             case 3:
@@ -43,10 +43,22 @@ int main() {
                 rainha++;
                 }
                 rainha = 0;
-
+            
                 break;
 
-            case 4:// teste finalizado
+            case 4:// 
+                printf("\nvoce escolheu o cavalo: \n");
+            
+                for (cavalo ; cavalo <= 0 ; cavalo++) { // move o cavalo 1 casa a direita
+                    for (int i = 0; i < 2; i++){// move o cavalo 2 casas para cima
+                        printf("Cima\n");// mostra a direção do movimento
+                    }    
+                    printf("Direita\n");// mostra a direção do movimento
+                }
+                cavalo = 0;
+                break;
+
+            case 5:// teste finalizado
                 printf("\nteste finalizado\n");
                 break;
 
@@ -55,7 +67,7 @@ int main() {
             break;
         }
 
-    } while (opcao !=4);
+    } while (opcao !=5);
     
     printf("\n");
 
