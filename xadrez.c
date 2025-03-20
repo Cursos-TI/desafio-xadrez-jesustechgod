@@ -37,7 +37,7 @@ int main() {
                 break;
             
             case 3:
-                printf("\nvoce escolheu a opcao o bispo:\n");
+                printf("\nvoce escolheu a rainha:\n");
                 while (rainha < 8){// move a rainha 8 casas a esquerda
                 printf("Esquerda \n");// mostra a direção do movimento
                 rainha++;
