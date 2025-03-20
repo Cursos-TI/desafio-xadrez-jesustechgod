@@ -1,8 +1,29 @@
-#include <stdio.h>
+#include <stdio.h> 
 
-int main() {
+void movertorre(int casas){
+    if (casas > 0){
+        printf("Direita\n");// mostra a direção do movimento
+        movertorre(casas - 1);
+    }
+}  
+void moverbispo(int casas){
+    if (casas > 0){
+        printf("Cima\n");// mostra a direção do movimento
+        printf("Direita\n");// mostra a direção do movimento
+        moverbispo(casas - 1);
+    }
+}   
+void moverrainha(int casas){
+    if (casas > 0){
+        printf("Esquerda \n");// mostra a direção do movimento
+        moverrainha (casas - 1);
+    }
+    
+}
 
-    int opcao, torre  = 0, bispo = 0, rainha = 0, cavalo = 0;
+int main(){
+
+    int opcao, torre, bispo, rainha, cavalo = 0;
     
     printf("Desafio de Xadrez\n");
 
@@ -20,42 +41,57 @@ int main() {
         switch (opcao){
             case 1: 
                 printf("\nvoce escolheu a torre: \n");
+                printf("quantas casas voce gostaria de mover para a direita(no maximo ate 5): ");
+                scanf("%d", &torre);
             
-                for (torre ; torre < 5 ; torre++) { // move a torre 5 casas a direita
-                printf("Direita\n");// mostra a direção do movimento
+                if (torre <= 5 ){
+                    moverrainha (torre);
+                }else{
+                    printf("\nnumero invalido!!!!!\n");
                 }
-                torre = 0;
+
                 break;
         
             case 2:
                 printf("\nvoce escolheu o bispo:\n");
-                do {
-                printf("Cima, Direita \n");// mostra a direção do movimento
-                bispo++;
-                } while (bispo < 5);//move o bispo 5 casas na diagonal
-                bispo = 0;
+                printf("quantas casas voce gostaria de mover para a diagonal superior direita(no maximo ate 5): ");
+                scanf("%d", &bispo);
+                
+                if (bispo <= 5 ){
+                    moverbispo (bispo);
+                }else{
+                    printf("\nnumero invalido!!!!!\n");
+                
+                }
                 break;
             
             case 3:
                 printf("\nvoce escolheu a rainha:\n");
-                while (rainha < 8){// move a rainha 8 casas a esquerda
-                printf("Esquerda \n");// mostra a direção do movimento
-                rainha++;
+                printf("quantas casas voce gostaria de mover para a esquerda(no maximo ate 8): ");
+                scanf("%d", &rainha);
+
+                if (rainha <= 8 ){
+                    moverrainha (rainha);
+                }else{
+                    printf("\nnumero invalido!!!!!\n");
                 }
-                rainha = 0;
-            
+                
                 break;
 
-            case 4:// 
+            case 4: 
                 printf("\nvoce escolheu o cavalo: \n");
             
-                for (cavalo ; cavalo <= 0 ; cavalo++) { // move o cavalo 1 casa a direita
-                    for (int i = 0; i < 2; i++){// move o cavalo 2 casas para cima
+                for (cavalo ; cavalo < 4; cavalo++) {
+                    if (cavalo < 2){
                         printf("Cima\n");// mostra a direção do movimento
-                    }    
-                    printf("Direita\n");// mostra a direção do movimento
+                        continue;}   // Pula a iteração quando o cavalo é 2
+                    if (cavalo < 3){    
+                        printf("Direita");// mostra a direção do movimento
+                        break;// Sai do loop quando o cavalo é 3
+                    }
                 }
                 cavalo = 0;
+                printf("\n");
                 break;
 
             case 5:// teste finalizado
@@ -72,4 +108,5 @@ int main() {
     printf("\n");
 
     return 0;
+
 }
